@@ -22,23 +22,27 @@ public class PetController {
         return objetoPet;
     }
 
-    @GetMapping ("/buscaPeloEmail/{email}/")
+    @GetMapping ("buscaPeloEmail/{email}/")
     public Pet retornarPetPeloEmail(@PathVariable String email){
         Pet objetoPet = petService.pesquisarPetPeloEmail(email);
         return objetoPet;
     }
 
-    @GetMapping("/buscaPeloNome/{nome}/")
+    @GetMapping("buscaPeloNome/{nome}/")
     public List<Pet> pesquisarPetPeloNome(@PathVariable String nome){
-        List<Pet> listaDePets = petService.pesquisarPetPeloNome(nome);
-        return listaDePets;
+        return petService.pesquisarPetPeloNome(nome);
+
     }
 
-    @GetMapping("/buscaPeloDono/{nomeDoDono}/")
+    @GetMapping("buscaPeloDono/{nomeDoDono}/")
     public List<Pet> pesquisarPetPeloDono(@PathVariable String nomeDoDono){
-        List<Pet> petsDoMesmoDono = petService.pesquisarPetPeloNomeDoDono(nomeDoDono);
-        return petsDoMesmoDono;
+        return petService.pesquisarPetPeloNomeDoDono(nomeDoDono);
+
     }
 
+    @DeleteMapping("{nome}/{nomeDoDono}/")
+    public Pet deletarPet(@PathVariable String nome, @PathVariable String nomeDoDono){
+        return petService.deletarPet(nome, nomeDoDono);
+    }
 
 }

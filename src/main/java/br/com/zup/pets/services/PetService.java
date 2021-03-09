@@ -46,4 +46,13 @@ public class PetService {
         throw new RuntimeException("Nenhum Pet encontrado com esse nome");
     }
 
+    public Pet deletarPet(String nome, String nomeDoDono){
+        for(Pet pet : pets){
+            if(pet.getNome().equalsIgnoreCase(nome) && pet.getNomeDoDono().equalsIgnoreCase(nomeDoDono)){
+                pets.remove(pet);
+                return pet;
+            }
+        }
+        throw new RuntimeException("Pet não encontrado");
+    }
 }
