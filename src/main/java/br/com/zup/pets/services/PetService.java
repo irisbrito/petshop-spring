@@ -24,10 +24,12 @@ public class PetService {
         throw new RuntimeException("Pet não encontrado");
     }
 
-    public Pet pesquisarPetPeloNomeDoDono(String nomeDoDono){
+    public List<Pet> pesquisarPetPeloNomeDoDono(String nomeDoDono){
         for (Pet pet : pets){
             if(pet.getNomeDoDono().equalsIgnoreCase(nomeDoDono)){
-                return pet;
+                List<Pet> petsComMesmoDono = new ArrayList<>();
+                petsComMesmoDono.add(pet);
+                return petsComMesmoDono;
             }
         }
         throw new RuntimeException("Pet não encontrado");
@@ -43,4 +45,5 @@ public class PetService {
         }
         throw new RuntimeException("Nenhum Pet encontrado com esse nome");
     }
+
 }

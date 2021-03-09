@@ -30,8 +30,15 @@ public class PetController {
 
     @GetMapping("/buscaPeloNome/{nome}/")
     public List<Pet> pesquisarPetPeloNome(@PathVariable String nome){
-        List<Pet> objetoPet = petService.pesquisarPetPeloNome(nome);
-        return objetoPet;
+        List<Pet> listaDePets = petService.pesquisarPetPeloNome(nome);
+        return listaDePets;
     }
+
+    @GetMapping("/buscaPeloDono/{nomeDoDono}/")
+    public List<Pet> pesquisarPetPeloDono(@PathVariable String nomeDoDono){
+        List<Pet> petsDoMesmoDono = petService.pesquisarPetPeloNomeDoDono(nomeDoDono);
+        return petsDoMesmoDono;
+    }
+
 
 }
