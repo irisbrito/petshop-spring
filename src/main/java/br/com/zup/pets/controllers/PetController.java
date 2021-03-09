@@ -17,6 +17,14 @@ public class PetController {
     @ResponseStatus(HttpStatus.CREATED)
     public Pet adicionarPet(@RequestBody Pet pet){
         Pet objetoPet = petService.adicionarPet(pet);
-        return pet;
+        return objetoPet;
     }
+
+    @GetMapping ("{email}/")
+    public Pet retornarPetPeloEmail(@PathVariable String email){
+        Pet objetoPet = petService.pesquisarPetPeloEmail(email);
+        return objetoPet;
+    }
+
+
 }

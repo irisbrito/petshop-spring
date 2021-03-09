@@ -14,4 +14,31 @@ public class PetService {
         pets.add(pet);
         return pet;
     }
+
+    public Pet pesquisarPetPeloEmail(String emailDoDono) {
+        for (Pet pet : pets) {
+            if (pet.getEmailDoDono().equals(emailDoDono)) {
+                return pet;
+            }
+        }
+        throw new RuntimeException("Pet não encontrado");
+    }
+
+    public Pet pesquisarPetPeloNomeDoDono(String nomeDoDono){
+        for (Pet pet : pets){
+            if(pet.getNomeDoDono().equalsIgnoreCase(nomeDoDono)){
+                return pet;
+            }
+        }
+        throw new RuntimeException("Pet não encontrado");
+    }
+
+    public Pet pesquisarPetPeloNome(String nome){
+        for(Pet pet : pets){
+            if(pet.getNome().equalsIgnoreCase(nome)){
+                return pet;
+            }
+        }
+        throw new RuntimeException("Pet não encontrado");
+    }
 }
