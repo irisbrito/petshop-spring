@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("petshop/")
 public class PetController {
@@ -20,11 +22,16 @@ public class PetController {
         return objetoPet;
     }
 
-    @GetMapping ("{email}/")
+    @GetMapping ("/buscaPeloEmail/{email}/")
     public Pet retornarPetPeloEmail(@PathVariable String email){
         Pet objetoPet = petService.pesquisarPetPeloEmail(email);
         return objetoPet;
     }
 
+    @GetMapping("/buscaPeloNome/{nome}/")
+    public List<Pet> pesquisarPetPeloNome(@PathVariable String nome){
+        List<Pet> objetoPet = petService.pesquisarPetPeloNome(nome);
+        return objetoPet;
+    }
 
 }
