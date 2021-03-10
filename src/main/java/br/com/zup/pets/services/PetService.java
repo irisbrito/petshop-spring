@@ -15,10 +15,12 @@ public class PetService {
         return pet;
     }
 
-    public Pet pesquisarPetPeloEmail(String emailDoDono) {
+    public List<Pet> pesquisarPetPeloEmail(String emailDoDono) {
+        List<Pet> petsComMesmoDono = new ArrayList<>();
         for (Pet pet : pets) {
             if (pet.getEmailDoDono().equals(emailDoDono)) {
-                return pet;
+                petsComMesmoDono.add(pet);
+                return petsComMesmoDono;
             }
         }
         throw new RuntimeException("Pet não encontrado");

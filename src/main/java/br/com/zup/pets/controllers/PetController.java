@@ -22,9 +22,9 @@ public class PetController {
         return objetoPet;
     }
 
-    @GetMapping ("buscaPeloEmail/{email}/")
-    public Pet retornarPetPeloEmail(@PathVariable String email){
-        Pet objetoPet = petService.pesquisarPetPeloEmail(email);
+    @GetMapping("buscaPeloEmail/{email}/")
+    public List<Pet> retornarPetPeloEmail(@PathVariable String email){
+        List<Pet> objetoPet = petService.pesquisarPetPeloEmail(email);
         return objetoPet;
     }
 
