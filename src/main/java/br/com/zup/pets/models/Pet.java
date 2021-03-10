@@ -1,13 +1,27 @@
 package br.com.zup.pets.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class Pet {
+    @NotEmpty(message = "O nome não pode estar vazio")
+    @NotNull(message =  "O nome é um campo obrigatório")
     private String nome;
+
+    @NotEmpty(message = "A raça não pode estar vazio")
+    @NotNull(message =  "Raça é um campo obrigatório")
     private String raca;
+
     private String especie;
+
     private LocalDate dataDeEntrada;
+    @NotEmpty(message = "O nome do dono não pode estar vazio")
+    @NotNull(message =  "O nome do dono é um campo obrigatório")
     private String nomeDoDono;
+
+    @Email
     private String emailDoDono;
     private String telefoneDoDono;
 
