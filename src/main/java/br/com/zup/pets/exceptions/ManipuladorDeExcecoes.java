@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestControllerAdvice
 public class ManipuladorDeExcecoes extends ResponseEntityExceptionHandler {
 
@@ -16,5 +19,12 @@ public class ManipuladorDeExcecoes extends ResponseEntityExceptionHandler {
         return super.handleMethodArgumentNotValid(ex, headers, status, request);
     }
 
+    private List<ObjetoDeErro> getErros(MethodArgumentNotValidException exception){
+        List<ObjetoDeErro> objetosDeErro = exception.getBindingResult()
+                .getFieldErrors().stream()
+                .map(erro -> new ObjetoDeErro(erro.getDefaultMessage(), erro.getField()))
+                .collect(Collectors.toList());
 
+        return objetosDeErro;
+    }
 }
